@@ -22,10 +22,10 @@ client.on('interactionCreate', (i) => {
 
     if (i.commandName === 'addfacto') {
         const fact = i.options.get('facto').value;
-        console.log(fact);
+        //console.log(fact);
         fs.appendFile('fact-list.txt', `${fact}\n`, err => {});
 
-        i.reply(`📝 ** Facto agregado! ** (${fact})`);
+        i.reply(`📝 ** Facto agregado! ** *"${fact}"*`);
     }
 });
 
@@ -35,8 +35,8 @@ client.on('messageCreate', (msg) => {
         var lines = data.split('\n');
 
         var line = lines[Math.floor(Math.random() * lines.length)]
-        console.log(line);
-        msg.reply(`${line}`);
+        //console.log(line);
+        msg.reply(`${line} `);
     }
 });
 
