@@ -14,6 +14,10 @@ const commands = [
             },
         ],
     },
+    {
+        name: 'facto',
+        description: 'Espiteate un factron xd',
+    },
 ];
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);

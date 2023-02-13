@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client, IntentsBitField, messageLink } = require('discord.js');
 const fs = require('fs');
-const { listenerCount } = require('process');
+const { listenerCount, allowedNodeEnvironmentFlags } = require('process');
 const { callbackify } = require('util');
 
 const client = new Client({
@@ -27,16 +27,17 @@ client.on('interactionCreate', (i) => {
 
         i.reply(`📝 ** Facto agregado! ** *"${fact}"*`);
     }
-});
 
-client.on('messageCreate', (msg) => {
-    if (msg.content === "facto") {
-        const data = fs.readFileSync('fact-list.txt', 'utf8');
-        var lines = data.split('\n');
-
-        var line = lines[Math.floor(Math.random() * lines.length)]
-        //console.log(line);
-        msg.reply(`${line} `);
+    if (i.commandName === 'facto') {
+        try {
+            const data = fs.readFileSync('fact-list.txt', 'utf8');
+            var lines = data.split('\n');
+            var line = lines[Math.floor(Math.random() * lines.length)];
+            msg.reply(`${line} `);
+        } catch (err) {
+            console.log(err);
+            msg.reply(`Juamba cambiado^2`);
+        }
     }
 });
 
