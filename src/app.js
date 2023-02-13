@@ -33,10 +33,10 @@ client.on('interactionCreate', (i) => {
             const data = fs.readFileSync('fact-list.txt', 'utf8');
             var lines = data.split('\n');
             var line = lines[Math.floor(Math.random() * lines.length)];
-            msg.reply(`${line} `);
+            i.reply(`${line} `);
         } catch (err) {
             console.log(err);
-            msg.reply(`Juamba cambiado^2`);
+            i.reply('Juamba cambiado^2');
         }
     }
 });
